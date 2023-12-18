@@ -15,61 +15,45 @@ class _InputPageState extends State<InputPage> {
         title: const Text('BMI Calculator'),
         backgroundColor: const Color(0xff00000000),
       ),
-      body: Column(children: [
+      body: const Column(children: [
         Row(children: [
           Expanded(
-            child: Container(
-              height: 170.0,
-              margin: const EdgeInsets.all(15.0),
-              decoration: BoxDecoration(
-                color: const Color(0xFF1D1E33),
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-            ),
+            child: InputContainer(),
           ),
           Expanded(
-            child: Container(
-              height: 170.0,
-              margin: const EdgeInsets.all(15.0),
-              decoration: BoxDecoration(
-                color: const Color(0xFF1D1E33),
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-            ),
+            child: InputContainer(),
           ),
         ]),
         Expanded(
-          child: Container(
-            margin: const EdgeInsets.all(15.0),
-            decoration: BoxDecoration(
-              color: const Color(0xFF1D1E33),
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-          ),
+          child: InputContainer(),
         ),
         Row(children: [
           Expanded(
-            child: Container(
-              height: 170.0,
-              margin: const EdgeInsets.all(15.0),
-              decoration: BoxDecoration(
-                color: const Color(0xFF1D1E33),
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-            ),
+            child: InputContainer(),
           ),
           Expanded(
-            child: Container(
-              height: 170.0,
-              margin: const EdgeInsets.all(15.0),
-              decoration: BoxDecoration(
-                color: const Color(0xFF1D1E33),
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-            ),
+            child: InputContainer(),
           ),
         ]),
       ]),
+    );
+  }
+}
+
+class InputContainer extends StatelessWidget {
+  const InputContainer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 200,
+      margin: const EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFF1D1E33),
+        borderRadius: BorderRadius.circular(20.0),
+      ),
     );
   }
 }
