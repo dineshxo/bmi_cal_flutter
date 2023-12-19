@@ -1,11 +1,9 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
+
+import 'constants.dart';
 import 'icon_content.dart';
 import 'input_container.dart';
-
-const bottomContainerColor = Color(0XffFB8500);
-const activeInputColor = Color.fromARGB(255, 46, 46, 48);
-const inactiveInputColor = Color(0Xff111328);
 
 enum GenderType { male, female }
 

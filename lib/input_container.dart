@@ -15,7 +15,9 @@ class InputContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onPress(),
+      onTap: () {
+        onPress();
+      },
       child: Container(
         height: 180,
         margin: const EdgeInsets.all(15.0),
