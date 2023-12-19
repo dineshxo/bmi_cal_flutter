@@ -1,9 +1,15 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
-
 import 'icon_content.dart';
 import 'input_container.dart';
 
 const bottomContainerColor = Color(0XffFB8500);
+const activeInputColor = Color.fromARGB(255, 46, 46, 48);
+const inactiveInputColor = Color(0Xff111328);
+
+enum GenderType { male, female }
+
+GenderType selectedGender = GenderType.male;
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -23,19 +29,37 @@ class _InputPageState extends State<InputPage> {
       ),
       body: Column(
         children: [
-          const Row(children: [
+          Row(children: [
             Expanded(
               child: InputContainer(
-                inputChild: IconContent(
+                onPress: () {
+                  setState(() {
+                    selectedGender = GenderType.male;
+                  });
+                },
+                inputChild: const IconContent(
                   icon: Icons.male,
                   label: 'Male',
                 ),
+                color: selectedGender == GenderType.male
+                    ? activeInputColor
+                    : inactiveInputColor,
               ),
             ),
             Expanded(
-                child: InputContainer(
-                    inputChild:
-                        IconContent(icon: Icons.female, label: 'Female'))),
+              child: InputContainer(
+                onPress: () {
+                  setState(() {
+                    selectedGender = GenderType.female;
+                  });
+                },
+                inputChild:
+                    const IconContent(icon: Icons.female, label: 'Female'),
+                color: selectedGender == GenderType.female
+                    ? activeInputColor
+                    : inactiveInputColor,
+              ),
+            ),
           ]),
           Expanded(
             child: Container(
