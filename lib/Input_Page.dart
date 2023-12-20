@@ -1,4 +1,6 @@
 // ignore: file_names
+import 'package:bmi_cal/results_page.dart';
+import 'package:bmi_cal/roundiconbutton.dart';
 import 'package:flutter/material.dart';
 
 import 'constants.dart';
@@ -17,6 +19,10 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  int height = 80;
+  int weight = 50;
+  int age = 15;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +32,7 @@ class _InputPageState extends State<InputPage> {
         backgroundColor: const Color(0xff00000000),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Row(children: [
             Expanded(
@@ -40,8 +47,8 @@ class _InputPageState extends State<InputPage> {
                   label: 'Male',
                 ),
                 color: selectedGender == GenderType.male
-                    ? activeInputColor
-                    : inactiveInputColor,
+                    ? kActiveInputColor
+                    : kInactiveInputColor,
               ),
             ),
             Expanded(
@@ -54,52 +61,160 @@ class _InputPageState extends State<InputPage> {
                 inputChild:
                     const IconContent(icon: Icons.female, label: 'Female'),
                 color: selectedGender == GenderType.female
-                    ? activeInputColor
-                    : inactiveInputColor,
+                    ? kActiveInputColor
+                    : kInactiveInputColor,
               ),
             ),
           ]),
           Expanded(
-            child: Container(
-              height: 200,
-              margin: const EdgeInsets.all(15.0),
-              decoration: BoxDecoration(
-                color: Colors.amber,
-                borderRadius: BorderRadius.circular(20.0),
-              ),
+              child: InputContainerBottom(
+            color: kInputContainerColor,
+            inputChild: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Height',
+                  style: kLabelTextStyle,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: [
+                    Text(
+                      height.toString(),
+                      style: kNumberTextStyle,
+                    ),
+                    const Text(
+                      'cm',
+                      style: kLabelTextStyle,
+                    ),
+                  ],
+                ),
+                Slider(
+                    value: height.toDouble(),
+                    min: 80,
+                    max: 250,
+                    onChanged: (double newValue) {
+                      setState(() {
+                        height = newValue.round();
+                      });
+                    }),
+              ],
             ),
-          ),
+          )),
           Row(
             children: [
               Expanded(
-                child: Container(
-                  height: 200,
-                  margin: const EdgeInsets.all(15.0),
-                  decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                ),
+                child: InputContainerBottom(
+                    inputChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Weight',
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: kNumberTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                                icon: Icons.remove,
+                                onPressed: () {
+                                  if (weight > 20) {
+                                    setState(() {
+                                      weight--;
+                                    });
+                                  }
+                                }),
+                            const SizedBox(
+                              width: 15.0,
+                            ),
+                            RoundIconButton(
+                                icon: Icons.add,
+                                onPressed: () {
+                                  if (weight < 120) {
+                                    setState(() {
+                                      weight++;
+                                    });
+                                  }
+                                }),
+                          ],
+                        )
+                      ],
+                    ),
+                    color: kActiveInputColor),
               ),
               Expanded(
-                child: Container(
-                  height: 200,
-                  margin: const EdgeInsets.all(15.0),
-                  decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                ),
+                child: InputContainerBottom(
+                    inputChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Age',
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          age.toString(),
+                          style: kNumberTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                                icon: Icons.remove,
+                                onPressed: () {
+                                  if (age > 10) {
+                                    setState(() {
+                                      age--;
+                                    });
+                                  }
+                                }),
+                            const SizedBox(
+                              width: 15.0,
+                            ),
+                            RoundIconButton(
+                                icon: Icons.add,
+                                onPressed: () {
+                                  if (age < 120) {
+                                    setState(() {
+                                      age++;
+                                    });
+                                  }
+                                }),
+                          ],
+                        )
+                      ],
+                    ),
+                    color: kActiveInputColor),
               ),
             ],
           ),
-          Container(
-            height: 80.0,
-            width: double.infinity,
-            margin: const EdgeInsets.all(15.0),
-            decoration: BoxDecoration(
-              color: bottomContainerColor,
-              borderRadius: BorderRadius.circular(20.0),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const ResultsPage();
+                  },
+                ),
+              );
+            },
+            child: Container(
+              child: Center(
+                child: Text('Calculate BMI', style: kBottomButtonText),
+              ),
+              height: 80.0,
+              width: double.infinity,
+              margin: const EdgeInsets.all(15.0),
+              decoration: BoxDecoration(
+                color: kBottomContainerColor,
+                borderRadius: BorderRadius.circular(20.0),
+              ),
             ),
           )
         ],
