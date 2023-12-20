@@ -21,6 +21,13 @@ class _HomePageState extends State<HomePage> {
       title: 'BMI Calculator',
       home: const InputPage(),
       theme: ThemeData.dark().copyWith(
+        appBarTheme: const AppBarTheme(),
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(fontFamily: 'Montserrat'),
+          bodyMedium: TextStyle(fontFamily: 'Montserrat'),
+          titleLarge:
+              TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold),
+        ),
         primaryColor: const Color(0xFF0A0E21),
         scaffoldBackgroundColor: const Color.fromARGB(255, 9, 15, 49),
         sliderTheme: SliderTheme.of(context).copyWith(
