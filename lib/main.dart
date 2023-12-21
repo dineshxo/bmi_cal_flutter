@@ -1,11 +1,18 @@
 import 'package:bmi_cal/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:device_preview/device_preview.dart';
 
 import 'pages/Input_Page.dart';
 
 void main() {
   runApp(const HomePage());
 }
+
+// void main() => runApp(
+//       DevicePreview(
+//         builder: (context) => HomePage(), // Wrap your app
+//       ),
+//     );
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
