@@ -1,6 +1,7 @@
+import 'package:bmi_cal/constants.dart';
 import 'package:flutter/material.dart';
 
-import 'Input_Page.dart';
+import 'pages/Input_Page.dart';
 
 void main() {
   runApp(const HomePage());
@@ -20,8 +21,21 @@ class _HomePageState extends State<HomePage> {
       title: 'BMI Calculator',
       home: const InputPage(),
       theme: ThemeData.dark().copyWith(
+        appBarTheme: const AppBarTheme(),
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(fontFamily: 'Montserrat'),
+          bodyMedium: TextStyle(fontFamily: 'Montserrat'),
+          titleLarge:
+              TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold),
+        ),
         primaryColor: const Color(0xFF0A0E21),
-        scaffoldBackgroundColor: const Color.fromARGB(255, 9, 15, 49),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 0, 0, 0),
+        sliderTheme: SliderTheme.of(context).copyWith(
+            inactiveTrackColor: kInactiveInputColor,
+            activeTrackColor: const Color.fromARGB(255, 170, 103, 26),
+            thumbColor: const Color(0XffFB8500),
+            thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 15),
+            overlayColor: const Color(0X29FB8500)),
       ),
       debugShowCheckedModeBanner: false,
     );
