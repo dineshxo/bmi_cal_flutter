@@ -205,9 +205,6 @@ class _InputPageState extends State<InputPage> {
               );
             },
             child: Container(
-              child: Center(
-                child: Text('Calculate BMI', style: kBottomButtonText),
-              ),
               height: 80.0,
               width: double.infinity,
               margin: const EdgeInsets.all(15.0),
@@ -215,8 +212,11 @@ class _InputPageState extends State<InputPage> {
                 color: kBottomContainerColor,
                 borderRadius: BorderRadius.circular(20.0),
               ),
+              child: const Center(
+                child: Text('Calculate BMI', style: kBottomButtonText),
+              ),
             ),
-          )
+          ),
         ],
       ),
     );

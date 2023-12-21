@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//HomePage
+
 const kBottomContainerColor = Color(0XffFB8500);
 const kActiveInputColor = Color.fromARGB(255, 46, 46, 48);
 const kInputContainerColor = Color.fromARGB(255, 46, 46, 48);
@@ -16,3 +18,10 @@ const kNumberTextStyle = TextStyle(fontSize: 50, fontWeight: FontWeight.w900);
 
 const kBottomButtonText =
     TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600);
+
+const kResultsTitle =
+    TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.w600);
+
+//Results Page
+
+const kBMIValueText = TextStyle(fontSize: 80.0, fontWeight: FontWeight.bold);
