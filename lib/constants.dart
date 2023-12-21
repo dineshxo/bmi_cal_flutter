@@ -25,3 +25,7 @@ const kResultsTitle =
 //Results Page
 
 const kBMIValueText = TextStyle(fontSize: 80.0, fontWeight: FontWeight.bold);
+
+const kBottomText = TextStyle(
+  fontSize: 18.0,
+);

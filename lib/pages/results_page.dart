@@ -1,10 +1,19 @@
+import 'package:bmi_cal/components/bottom_button.dart';
 import 'package:bmi_cal/constants.dart';
 import 'package:flutter/material.dart';
 
 class ResultsPage extends StatelessWidget {
-  const ResultsPage({super.key});
+  const ResultsPage(
+      {super.key,
+      required this.bmi,
+      required this.bmiStatus,
+      required this.bmiDescription,
+      required this.bmiStatusColor});
 
-  final double bmi = 25.5;
+  final double bmi;
+  final String bmiStatus;
+  final String bmiDescription;
+  final Color bmiStatusColor;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +38,7 @@ class ResultsPage extends StatelessWidget {
                     //   borderRadius: BorderRadius.circular(20.0),
                     // ),
                     child: const Center(
-                      child: Text('Results.', style: kResultsTitle),
+                      child: Text('Results', style: kResultsTitle),
                     )),
               ),
               Expanded(
@@ -46,33 +55,31 @@ class ResultsPage extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Text('Overweight'),
                           Text(
-                            bmi.toString(),
+                            bmiStatus.toUpperCase(),
+                            style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                                color: bmiStatusColor),
+                          ),
+                          Text(
+                            bmi.toStringAsFixed(1),
                             style: kBMIValueText,
                           ),
                           Text(
-                              'You have a higher than normal body weight. Try to exercise more! ')
+                            bmiDescription,
+                            style: kBottomText,
+                            textAlign: TextAlign.center,
+                          )
                         ],
                       ),
                     )),
               ),
-              GestureDetector(
-                onTap: () {
+              BottomButton(
+                action: () {
                   Navigator.pop(context);
                 },
-                child: Container(
-                  height: 80.0,
-                  width: double.infinity,
-                  margin: const EdgeInsets.all(15.0),
-                  decoration: BoxDecoration(
-                    color: kBottomContainerColor,
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: const Center(
-                    child: Text('Home', style: kBottomButtonText),
-                  ),
-                ),
+                title: 'Home',
               ),
             ]),
       ),

@@ -1,7 +1,7 @@
 import 'package:bmi_cal/constants.dart';
 import 'package:flutter/material.dart';
 
-import 'Input_Page.dart';
+import 'pages/Input_Page.dart';
 
 void main() {
   runApp(const HomePage());

@@ -1,11 +1,14 @@
 // ignore: file_names
-import 'package:bmi_cal/results_page.dart';
-import 'package:bmi_cal/roundiconbutton.dart';
+import 'package:bmi_cal/bmi_calculator.dart';
+import 'package:bmi_cal/components/bottom_button.dart';
+import 'package:bmi_cal/components/icon_content.dart';
+import 'package:bmi_cal/pages/results_page.dart';
+import 'package:bmi_cal/components/roundiconbutton.dart';
 import 'package:flutter/material.dart';
 
-import 'constants.dart';
-import 'icon_content.dart';
-import 'input_container.dart';
+import '../constants.dart';
+
+import '../components/input_container.dart';
 
 enum GenderType { male, female }
 
@@ -193,30 +196,26 @@ class _InputPageState extends State<InputPage> {
               ),
             ],
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return const ResultsPage();
-                  },
-                ),
-              );
-            },
-            child: Container(
-              height: 80.0,
-              width: double.infinity,
-              margin: const EdgeInsets.all(15.0),
-              decoration: BoxDecoration(
-                color: kBottomContainerColor,
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              child: const Center(
-                child: Text('Calculate BMI', style: kBottomButtonText),
-              ),
-            ),
-          ),
+          BottomButton(
+              action: () {
+                BmiCalculator cal =
+                    BmiCalculator(height: height, weight: weight);
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return ResultsPage(
+                        bmi: cal.calculateBMI(),
+                        bmiDescription: cal.getDescription(),
+                        bmiStatus: cal.getResult(),
+                        bmiStatusColor: cal.getStatusColor(),
+                      );
+                    },
+                  ),
+                );
+              },
+              title: 'Calculate BMI')
         ],
       ),
     );
