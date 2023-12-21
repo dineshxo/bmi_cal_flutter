@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
               TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold),
         ),
         primaryColor: const Color(0xFF0A0E21),
-        scaffoldBackgroundColor: const Color.fromARGB(255, 9, 15, 49),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 0, 0, 0),
         sliderTheme: SliderTheme.of(context).copyWith(
             inactiveTrackColor: kInactiveInputColor,
             activeTrackColor: const Color.fromARGB(255, 170, 103, 26),
