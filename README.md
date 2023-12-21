@@ -1,10 +1,9 @@
 # bmi_cal
+![bmi](https://github.com/dineshxo/bmi_cal_flutter/assets/95670930/d3b715ca-d54f-4280-b773-8b8731d71cc8)
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+
 
 A few resources to get you started if this is your first Flutter project:
 
